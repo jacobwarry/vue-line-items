@@ -1,48 +1,185 @@
 <template>
 	<div id="app">
-		<v-nested-data-table
-			:headers="headers"
+		<v-nested-table
 			:items="items"
+			:tables="tables"
 		/>
 	</div>
 </template>
 
 <script lang="ts">
 import Vue from "vue";
-import VNestedDataTable from "@/components/VNestedDataTable/VNestedDataTable";
-import {NestedDataTableHeader} from "@/types";
+import {NestedTable} from "@/types";
+import VNestedTable from "@/components/VNestedTable/VNestedTable";
 
 export default Vue.extend({
 	name: "App",
 	components: {
-		VNestedDataTable
+		VNestedTable
 	},
 	data() {
 		return {
-			headers: [
+			tables: [
 				{
-					text: "header1",
-					value: "i1"
-				},
-				{
-					text: "header2",
-					value: "i2"
-				},
-				{
-					text: "header3",
-					value: "i3"
-				},
-				{
-					text: "header4",
-					value: "i4"
+					renderHeader: true,
+					columns: [
+						{
+							field: "1",
+							label: "Qty",
+							width: 80
+						},
+						{
+							field: "2",
+							label: "ID",
+							width: 118
+						},
+						{
+							field: "3",
+							label: "Description",
+							width: "100%"
+						},
+						{
+							field: "4",
+							label: "Tax",
+							width: 100
+						},
+						{
+							field: "5",
+							label: "SKU",
+							width: 90
+						},
+						{
+							field: "6",
+							label: "Price $",
+							width: 100,
+						},
+						{
+							field: "7",
+							label: "Cost $",
+							width: 100
+						},
+						{
+							field: "8",
+							label: "Vendor",
+							width: 200,
+							hidden: true
+						},
+						{
+							field: "9",
+							label: "Total $",
+							width: 100
+						}
+					]
 				}
-			] as NestedDataTableHeader[],
+			] as NestedTable[],
 			items: [
 				{
-					i1: "item1",
-					i2: "item2",
-					i3: "item3",
-					i4: "item4"
+					id: 1,
+					parentId: 0,
+					data: [
+						{
+							field: "1",
+							value: 50
+						},
+						{
+							field: "2",
+							value: 552574328
+						},
+						{
+							field: "3",
+							value: "elleven Command 15\" Computer Backpack"
+						},
+						{
+							field: "4",
+							value: 1
+						},
+						{
+							field: "5",
+							value: "0011-54"
+						},
+						{
+							field: "6",
+							value: 0,
+							hidden: () => true
+						},
+						{
+							field: "7",
+							value: 0,
+							hidden: () => true
+						},
+						{
+							field: "8",
+							value: "Leeds - Trimark",
+							span: 2
+						},
+						{
+							field: "9",
+							value: 2996
+						}
+					],
+					children: [
+						{
+							id: 2,
+							parentId: 0,
+							data: [
+								{
+									field: "1",
+									value: 2
+								},
+								{
+									field: "2",
+									value: "Item 2"
+								}
+							],
+							children: []
+						}
+					]
+				},
+				{
+					id: 7,
+					parentId: 0,
+					data: [
+						{
+							field: "1",
+							value: 50
+						},
+						{
+							field: "2",
+							value: 552574328
+						},
+						{
+							field: "3",
+							value: "elleven Command 15\" Computer Backpack"
+						},
+						{
+							field: "4",
+							value: 1
+						},
+						{
+							field: "5",
+							value: "0011-54"
+						},
+						{
+							field: "6",
+							value: 0,
+							hidden: () => true
+						},
+						{
+							field: "7",
+							value: 0,
+							hidden: () => true
+						},
+						{
+							field: "8",
+							value: "Leeds - Trimark",
+							span: 2
+						},
+						{
+							field: "9",
+							value: 2996
+						}
+					],
+					children: []
 				}
 			]
 		}

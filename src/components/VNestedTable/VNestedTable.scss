@@ -1,0 +1,64 @@
+﻿.v-nested-table__container {
+    font-size: 1.3rem;
+
+    table {
+        //border: 1px solid #DDDDDD;
+        border-collapse: collapse;
+        border-spacing: 0;
+        //table-layout: fixed;
+        width: 100%;
+
+        th, td {
+            box-sizing: border-box;
+            padding: 0;
+        }
+        
+        thead {
+            tr {
+                background-color: #434343;
+
+                th {
+                    box-sizing: border-box;
+                    color: #DDDDDD;
+                    font-size: 1.4rem;
+                    padding: 4px 6px;
+                }
+            }
+        }
+
+        tbody {
+            tr {
+                td {
+                    //border: 0px solid #DEDEDE;
+                    padding: 0;
+                }
+            }
+        }
+    }
+
+    .v-nested-table__data-table {
+        .v-nested-table__container-head {
+            th {
+                padding: 0;
+
+            }
+        }
+        
+        td {
+            &.v-nested-table__data-cell {
+                background-color: #FBFBFB;
+                border-left: 1px solid #DDDDDD;
+                border-right: 1px solid #DDDDDD;
+                border-bottom: 1px solid #DDDDDD;
+                
+                font-size: 1.4rem;
+                //height: 26px;
+                padding: 4px 6px;
+            }
+        }
+    }
+    
+    .text-start {
+        text-align: start;
+    }
+}
