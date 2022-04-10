@@ -53,18 +53,9 @@ export default Vue.extend({
 							editableInput: "select",
 							editableType: "string",
 							editableSource: [
-								{
-									value: 0,
-									text: "No"
-								},
-								{
-									value: 1,
-									text: "Yes"
-								},
-								{
-									value: 2,
-									text: "Clothing"
-								}
+								{value: 0, text: "No"},
+								{value: 1, text: "Yes"},
+								{value: 2, text: "Clothing"}
 							] as EditableSourceItem[]
 						},
 						{
@@ -102,14 +93,8 @@ export default Vue.extend({
 							editableInput: "select",
 							editableType: "string",
 							editableSource: [
-								{
-									value: 1,
-									text: "Senor Vendor"
-								},
-								{
-									value: 2,
-									text: "Secondary Vendor"
-								}
+								{value: 1, text: "Senor Vendor"},
+								{value: 2, text: "Secondary Vendor"}
 							] as EditableSourceItem[]
 						},
 						{
@@ -120,12 +105,68 @@ export default Vue.extend({
 							displayValue: (item: NestedTableDataCell) => item.value
 						}
 					] as NestedTableColumn[]
+				},
+				{
+					renderHeader: true,
+					columns: [
+						{
+							field: "1",
+							label: "Type",
+							width: 198,
+							isEditable: () => true,
+							editableInput: "select",
+							editableType: "integer"
+						},
+						{
+							field: "2",
+							label: "Description",
+							width: "100%",
+							isEditable: () => true,
+							editableInput: "text",
+							editableType: "string"
+						},
+						{
+							field: "3",
+							label: "Qty",
+							width: 90,
+							isEditable: () => true,
+							displayValue: (item: NestedTableDataCell) => item.value,
+							editableInput: "text",
+							editableType: "integer"
+						},
+						{
+							field: "4",
+							label: "Price $",
+							width: 100,
+							isEditable: () => true,
+							displayValue: (item: NestedTableDataCell) => item.value,
+							editableInput: "text",
+							editableType: "decimal"
+						},
+						{
+							field: "5",
+							label: "Cost $",
+							width: 100,
+							isEditable: () => true,
+							displayValue: (item: NestedTableDataCell) => item.value,
+							editableInput: "text",
+							editableType: "decimal"
+						},
+						{
+							field: "6",
+							label: "Extension $",
+							width: 94,
+							isEditable: false,
+							displayValue: (item: NestedTableDataCell) => item.value
+						}
+					] as NestedTableColumn[]
 				}
 			] as NestedTable[],
 			items: [
 				{
 					id: 1,
 					parentId: 0,
+					state: true,
 					data: [
 						{field: "1", value: 50},
 						{field: "2", value: 552574328},
@@ -141,9 +182,14 @@ export default Vue.extend({
 						{
 							id: 2,
 							parentId: 1,
+							state: true,
 							data: [
 								{field: "1", value: 2},
-								{field: "2", value: "Item 2"}
+								{field: "2", value: "Item 2"},
+								{field: "3", value: 50},
+								{field: "4", value: 10, isHidden: () => false},
+								{field: "5", value: 5, isHidden: () => false},
+								{field: "6", value: 10}
 							] as NestedTableDataCell[],
 							children: [] as NestedItem[]
 						}
@@ -152,6 +198,7 @@ export default Vue.extend({
 				{
 					id: 10,
 					parentId: 0,
+					state: true,
 					data: [
 						{field: "1", value: 50},
 						{field: "2", value: 552574328},

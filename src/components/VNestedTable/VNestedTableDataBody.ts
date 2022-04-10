@@ -24,18 +24,22 @@ export default Vue.extend({
 			return this.$createElement(VNestedTableDataRow, {
 				props: {
 					item: this.item,
+					depth: this.depth,
 					columns: this.tables[this.depth].columns
 				}
 			})
 		},
 		genChildRow() {
-			return this.$createElement(VNestedTableChildRow, {
-				props: {
-					items: this.item.children,
-					depth: this.depth + 1,
-					tables: this.tables
-				}
-			})
+			const nextDepth = this.depth + 1;
+			if (this.tables[nextDepth]){
+				return this.$createElement(VNestedTableChildRow, {
+					props: {
+						item: this.item,
+						depth: nextDepth,
+						tables: this.tables
+					}
+				})
+			}
 		}
 	},
 	render(): VNode {

@@ -9,6 +9,7 @@ export interface NestedTable {
 export interface NestedItem {
 	id: number;
 	parentId: number;
+	state: boolean;
 	data: NestedTableDataCell[];
 	children: NestedItem[]
 }

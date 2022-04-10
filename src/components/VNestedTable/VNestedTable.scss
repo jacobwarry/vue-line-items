@@ -35,12 +35,11 @@
             }
         }
     }
-
+    
     .v-nested-table__data-table {
         .v-nested-table__container-head {
             th {
                 padding: 0;
-
             }
         }
         
@@ -82,6 +81,40 @@
                             outline: none;
                         }
                     }
+                }
+            }
+        }
+    }
+
+    .v-nested-table__container-head-row {
+        &.head-row-p0 {
+            th {
+                padding: 0 !important;
+            }
+        }
+    }
+    
+    .v-nested-table__container-table {
+        .v-nested-table__container-head {
+            th {
+                padding: 4px 6px;
+            }
+        }
+    }
+    
+    .v-nested-table__child-cell {
+        background-color: #DFDFDF;
+        border: 1px solid #DDDDDD;
+        padding: 5px;
+        
+        &[data-depth="1"] {
+            padding-left: 30px;
+        }
+        
+        .v-nested-table__container-body {
+            .v-nested-table__data-row {
+                td {
+                    font-size: 1.1rem;
                 }
             }
         }

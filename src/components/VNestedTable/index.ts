@@ -2,6 +2,7 @@
 import VNestedTableContainer from "@/components/VNestedTable/VNestedTableContainer";
 import VNestedTableColGroup	from "@/components/VNestedTable/VNestedTableColGroup";
 import VNestedTableHead from "@/components/VNestedTable/VNestedTableHead";
+import VNestedTableContainerTable from "@/components/VNestedTable/VNestedTableContainerTable";
 import VNestedTableContainerBody from "@/components/VNestedTable/VNestedTableContainerBody";
 import VNestedTableContainerRow	from "@/components/VNestedTable/VNestedTableContainerRow";
 import VNestedTableDataTable from "@/components/VNestedTable/VNestedTableDataTable";
@@ -15,6 +16,7 @@ export {
 	VNestedTableContainer,
 	VNestedTableColGroup,
 	VNestedTableHead,
+	VNestedTableContainerTable,
 	VNestedTableContainerBody,
 	VNestedTableContainerRow,
 	VNestedTableDataTable,

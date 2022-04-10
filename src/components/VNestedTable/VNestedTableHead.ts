@@ -10,6 +10,10 @@ export default Vue.extend({
 			type: Array,
 			default: () => []
 		} as PropValidator<NestedTableColumn[]>,
+		depth: {
+			type: Number,
+			default: 0
+		},
 		hideLabels: {
 			type: Boolean,
 			default: false
@@ -32,7 +36,7 @@ export default Vue.extend({
 			};
 
 			const children = [];
-			
+
 			if (!this.hideLabels) {
 				children.push(this.$createElement("span", [column.label]));
 			}
@@ -45,7 +49,14 @@ export default Vue.extend({
 			staticClass: "v-nested-table__container-head"
 		}, [
 			this.$createElement("tr", {
-			},this.columns.map(column => {
+				staticClass: "v-nested-table__container-head-row",
+				attrs: {
+					"data-depth": this.depth
+				},
+				class: {
+					"head-row-p0": this.hideLabels
+				}
+			}, this.columns.map(column => {
 				if (!column.isHidden) {
 					return this.genHeader(column);
 				}

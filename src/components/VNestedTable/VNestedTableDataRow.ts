@@ -10,6 +10,9 @@ export default Vue.extend({
 		},
 		item: {
 			type: Object as PropType<NestedItem>
+		},
+		depth: {
+			type: Number
 		}
 	},
 	data() {
@@ -54,6 +57,12 @@ export default Vue.extend({
 	render(): VNode {
 		return this.$createElement("tr", {
 			staticClass: "v-nested-table__data-row",
+			attrs: {
+				"data-depth": this.depth,
+				"data-id": this.item.id,
+				"data-parentid": this.item.parentId,
+				"data-state": this.item.state
+			}
 		}, [
 			this.genDataCells()
 		])
