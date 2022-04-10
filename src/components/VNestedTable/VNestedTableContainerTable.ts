@@ -35,6 +35,7 @@ export default Vue.extend({
 			return this.$createElement(VNestedTableHead, {
 				props: {
 					columns: table.columns,
+					hideLabels: !table.renderHeader,
 					depth: this.depth
 				}
 			})

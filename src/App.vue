@@ -70,6 +70,7 @@ export default Vue.extend({
 							field: "6",
 							label: "Price $",
 							width: 100,
+							align: "end",
 							isEditable: () => true,
 							displayValue: (item: NestedTableDataCell) => item.value,
 							editableInput: "text",
@@ -79,6 +80,7 @@ export default Vue.extend({
 							field: "7",
 							label: "Cost $",
 							width: 100,
+							align: "end",
 							isEditable: () => true,
 							displayValue: (item: NestedTableDataCell) => item.value,
 							editableInput: "text",
@@ -101,6 +103,7 @@ export default Vue.extend({
 							field: "9",
 							label: "Total $",
 							width: 100,
+							align: "end",
 							isEditable: false,
 							displayValue: (item: NestedTableDataCell) => item.value
 						}
@@ -115,7 +118,11 @@ export default Vue.extend({
 							width: 198,
 							isEditable: () => true,
 							editableInput: "select",
-							editableType: "integer"
+							editableType: "integer",
+							editableSource: [
+								{value: 1, text: "Type 1"},
+								{value: 2, text: "Type 2"}
+							] as EditableSourceItem[]
 						},
 						{
 							field: "2",
@@ -138,6 +145,7 @@ export default Vue.extend({
 							field: "4",
 							label: "Price $",
 							width: 100,
+							align: "end",
 							isEditable: () => true,
 							displayValue: (item: NestedTableDataCell) => item.value,
 							editableInput: "text",
@@ -147,6 +155,7 @@ export default Vue.extend({
 							field: "5",
 							label: "Cost $",
 							width: 100,
+							align: "end",
 							isEditable: () => true,
 							displayValue: (item: NestedTableDataCell) => item.value,
 							editableInput: "text",
@@ -156,6 +165,69 @@ export default Vue.extend({
 							field: "6",
 							label: "Extension $",
 							width: 94,
+							align: "end",
+							isEditable: false,
+							displayValue: (item: NestedTableDataCell) => item.value
+						}
+					] as NestedTableColumn[]
+				},
+				{
+					renderHeader: false,
+					columns: [
+						{
+							field: "1",
+							label: "Type",
+							width: 182,
+							isEditable: () => true,
+							editableInput: "select",
+							editableType: "integer",
+							editableSource: [
+								{value: 1, text: "Type 1"},
+								{value: 2, text: "Type 2"}
+							] as EditableSourceItem[]
+						},
+						{
+							field: "2",
+							label: "Description",
+							width: "100%",
+							isEditable: () => true,
+							editableInput: "text",
+							editableType: "string"
+						},
+						{
+							field: "3",
+							label: "Qty",
+							width: 90,
+							isEditable: () => true,
+							displayValue: (item: NestedTableDataCell) => item.value,
+							editableInput: "text",
+							editableType: "integer"
+						},
+						{
+							field: "4",
+							label: "Price $",
+							width: 100,
+							align: "end",
+							isEditable: () => true,
+							displayValue: (item: NestedTableDataCell) => item.value,
+							editableInput: "text",
+							editableType: "decimal"
+						},
+						{
+							field: "5",
+							label: "Cost $",
+							width: 100,
+							align: "end",
+							isEditable: () => true,
+							displayValue: (item: NestedTableDataCell) => item.value,
+							editableInput: "text",
+							editableType: "decimal"
+						},
+						{
+							field: "6",
+							label: "Extension $",
+							width: 94,
+							align: "end",
 							isEditable: false,
 							displayValue: (item: NestedTableDataCell) => item.value
 						}
@@ -191,7 +263,21 @@ export default Vue.extend({
 								{field: "5", value: 5, isHidden: () => false},
 								{field: "6", value: 10}
 							] as NestedTableDataCell[],
-							children: [] as NestedItem[]
+							children: [
+								{
+									id: 3,
+									parentId: 2,
+									state: true,
+									data: [
+										{field: "1", value: 2},
+										{field: "2", value: "Item 2"},
+										{field: "3", value: 50},
+										{field: "4", value: 10, isHidden: () => false},
+										{field: "5", value: 5, isHidden: () => false},
+										{field: "6", value: 10}
+									] as NestedTableDataCell[]
+								}
+							] as NestedItem[]
 						}
 					] as NestedItem[]
 				},

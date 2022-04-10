@@ -40,7 +40,7 @@ export default Vue.extend({
 				"data-depth": this.depth,
 				"data-id": this.item.id,
 				"data-parentid": this.item.parentId,
-				"data-children": this.item.children.length
+				"data-children": this.item.children?.length
 			}
 		}, [
 			this.genContainerCell()

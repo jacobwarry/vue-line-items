@@ -48,7 +48,9 @@ export default Vue.extend({
 			},
 			[
 				this.genDataRow(),
-				this.item.children.length ? this.genChildRow() : null
+				this.item.children?.length
+					? this.genChildRow()
+					: null
 			]
 		);
 	}

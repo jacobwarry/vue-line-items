@@ -1,9 +1,10 @@
-﻿import Vue, {VNode} from "vue";
+﻿import Vue, {VNode, VNodeData} from "vue";
 import {
 	EditableSourceItem,
 	NestedTableColumn,
 	NestedTableDataCell
 } from "@/types";
+import {convertToUnit} from "@/util/helpers";
 
 export default Vue.extend({
 	name: "v-nested-table-data-cell",
@@ -82,9 +83,8 @@ export default Vue.extend({
 				? this.column.isEditable()
 				: this.column.isEditable;
 		}
-		
 		return this.$createElement("td", {
-				staticClass: "v-nested-table__data-cell",
+				staticClass: `v-nested-table__data-cell text-${this.column.align || "start"}`,
 				class: {
 					"data-cell-editing": (this.isRowBeingEdited || this.isCellBeingEdited) && isEditable
 				},

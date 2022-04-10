@@ -104,16 +104,20 @@
     
     .v-nested-table__child-cell {
         background-color: #DFDFDF;
-        border: 1px solid #DDDDDD;
-        padding: 5px;
+        border: 1px solid #DDDDDD;       
         
         &[data-depth="1"] {
-            padding-left: 30px;
+            padding: 5px 5px 5px 30px;
+        }
+
+        &[data-depth="2"] {
+            padding: 0 0 0 15px;
         }
         
         .v-nested-table__container-body {
             .v-nested-table__data-row {
                 td {
+                    height: 25px;
                     font-size: 1.1rem;
                 }
             }
@@ -122,5 +126,9 @@
     
     .text-start {
         text-align: start;
+    }
+    
+    .text-end {
+        text-align: end;
     }
 }
