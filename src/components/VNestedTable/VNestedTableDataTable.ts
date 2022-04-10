@@ -1,22 +1,22 @@
-﻿import Vue, {VNode} from "vue";
-import {NestedTable} from "@/types";
-import VNestedTableColGroup
-	from "@/components/VNestedTable/VNestedTableColGroup";
-import VNestedTableHead from "@/components/VNestedTable/VNestedTableHead";
-import VNestedTableDataBody
-	from "@/components/VNestedTable/VNestedTableDataBody";
+﻿import Vue, {PropType, VNode} from "vue";
+import {NestedItem, NestedTable} from "@/types";
+import {
+	VNestedTableColGroup,
+	VNestedTableDataBody,
+	VNestedTableHead
+} from "@/components/VNestedTable/index";
 
 export default Vue.extend({
 	name: "v-nested-table-data-table",
 	props: {
 		item: {
-			type: Object
+			type: Object as PropType<NestedItem>
 		},
 		depth: {
 			type: Number
 		},
 		tables: {
-			type: Array,
+			type: Array as PropType<NestedTable[]>,
 			default: () => []
 		}
 	},
@@ -36,8 +36,8 @@ export default Vue.extend({
 				}
 			})
 		},
-		genBody(){
-			return this.$createElement(VNestedTableDataBody,{
+		genBody() {
+			return this.$createElement(VNestedTableDataBody, {
 				props: {...this.$props}
 			})
 		}

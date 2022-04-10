@@ -9,7 +9,7 @@
 
 <script lang="ts">
 import Vue from "vue";
-import {EditableSourceItem, NestedTable, NestedTableColumn, NestedTableDataCell} from "@/types";
+import {EditableSourceItem, NestedItem, NestedTable, NestedTableColumn, NestedTableDataCell} from "@/types";
 import VNestedTable from "@/components/VNestedTable/VNestedTable";
 
 export default Vue.extend({
@@ -71,7 +71,7 @@ export default Vue.extend({
 							field: "5",
 							label: "SKU",
 							width: 90,
-							editable: () => true,
+							isEditable: () => true,
 							editableInput: "text",
 							editableType: "string"
 						},
@@ -117,7 +117,7 @@ export default Vue.extend({
 							label: "Total $",
 							width: 100,
 							isEditable: false,
-							displayValue: (item: NestedTableDataCell) => item.value,
+							displayValue: (item: NestedTableDataCell) => item.value
 						}
 					] as NestedTableColumn[]
 				}
@@ -127,65 +127,45 @@ export default Vue.extend({
 					id: 1,
 					parentId: 0,
 					data: [
-						{
-							field: "1",
-							value: 50
-						},
-						{
-							field: "2",
-							value: 552574328
-						},
-						{
-							field: "3",
-							value: "elleven Command 15\" Computer Backpack"
-						},
-						{
-							field: "4",
-							value: 1
-						},
-						{
-							field: "5",
-							value: "0011-54"
-						},
-						{
-							field: "6",
-							value: 0,
-							isHidden: () => true
-						},
-						{
-							field: "7",
-							value: 0,
-							isHidden: () => true
-						},
-						{
-							field: "8",
-							value: 1,
-							span: 2
-						},
-						{
-							field: "9",
-							value: 2996
-						}
+						{field: "1", value: 50},
+						{field: "2", value: 552574328},
+						{field: "3", value: "elleven Command 15\" Computer Backpack"},
+						{field: "4", value: 1},
+						{field: "5", value: "0011-54"},
+						{field: "6", value: 0, isHidden: () => true},
+						{field: "7", value: 0, isHidden: () => true},
+						{field: "8", value: 1, span: 2},
+						{field: "9", value: 2996}
 					] as NestedTableDataCell[],
 					children: [
 						{
 							id: 2,
-							parentId: 0,
+							parentId: 1,
 							data: [
-								{
-									field: "1",
-									value: 2
-								},
-								{
-									field: "2",
-									value: "Item 2"
-								}
-							],
-							children: []
+								{field: "1", value: 2},
+								{field: "2", value: "Item 2"}
+							] as NestedTableDataCell[],
+							children: [] as NestedItem[]
 						}
-					]
+					] as NestedItem[]
+				},
+				{
+					id: 10,
+					parentId: 0,
+					data: [
+						{field: "1", value: 50},
+						{field: "2", value: 552574328},
+						{field: "3", value: "elleven Command 15\" Computer Backpack"},
+						{field: "4", value: 2},
+						{field: "5", value: "0011-54"},
+						{field: "6", value: 0, isHidden: () => true},
+						{field: "7", value: 0, isHidden: () => true},
+						{field: "8", value: 2, span: 2},
+						{field: "9", value: 2996}
+					] as NestedTableDataCell[],
+					children: [] as NestedItem[]
 				}
-			]
+			] as NestedItem[]
 		}
 	}
 });

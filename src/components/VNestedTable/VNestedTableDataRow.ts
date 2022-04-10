@@ -1,16 +1,15 @@
-﻿import Vue, {VNode} from "vue";
-import VNestedTableDataCell
-	from "@/components/VNestedTable/VNestedTableDataCell";
-import {NestedTableColumn, NestedTableDataCell} from "@/types";
+﻿import Vue, {PropType, VNode} from "vue";
+import {NestedItem, NestedTableColumn, NestedTableDataCell} from "@/types";
+import {VNestedTableDataCell} from "@/components/VNestedTable/index";
 
 export default Vue.extend({
 	name: "v-nested-table-data-row",
 	props: {
 		columns: {
-			type: Array as () => NestedTableColumn[]
+			type: Array as PropType<NestedTableColumn[]>
 		},
 		item: {
-			type: Object
+			type: Object as PropType<NestedItem>
 		}
 	},
 	data() {
@@ -38,19 +37,23 @@ export default Vue.extend({
 				props: {
 					data,
 					column,
-					isEditing: this.isEditing
+					isRowBeingEdited: this.isEditing
+				},
+				on: {
+					triggerEditCell: (state: boolean) => {
+						this.isEditing = state;
+						this.$emit("editItem", this.item.id)
+					}
 				}
 			});
+		},
+		"edit-cell": function() {
+			console.log("hoi");
 		}
 	},
 	render(): VNode {
 		return this.$createElement("tr", {
 			staticClass: "v-nested-table__data-row",
-			on: {
-				click: () => {
-					this.isEditing = true
-				}
-			}
 		}, [
 			this.genDataCells()
 		])

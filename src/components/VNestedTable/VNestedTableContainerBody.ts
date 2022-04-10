@@ -1,18 +1,17 @@
-﻿import Vue, {VNode} from "vue";
+﻿import Vue, {PropType, VNode} from "vue";
 import {PropValidator} from "vue/types/options";
-import {NestedTable} from "@/types";
-import VNestedTableContainerRow
-	from "@/components/VNestedTable/VNestedTableContainerRow";
+import {NestedItem, NestedTable} from "@/types";
+import {VNestedTableContainerRow} from "@/components/VNestedTable/index";
 
 export default Vue.extend({
 	name: "v-nested-table-container-body",
 	props: {
 		tables: {
-			type: Array,
+			type: Array as PropType<NestedTable[]>,
 			default: () => []
 		} as PropValidator<NestedTable[]>,
 		items: {
-			type: Array,
+			type: Array as PropType<NestedItem[]>,
 			default: () => []
 		},
 		depth: {
@@ -22,7 +21,7 @@ export default Vue.extend({
 	},
 	methods: {
 		genContainerRows() {
-			return this.items.map((item: any) => this.genContainerRow(item));
+			return this.items.map((item: NestedItem) => this.genContainerRow(item));
 		},
 		genContainerRow(item: any): VNode {
 			return this.$createElement(VNestedTableContainerRow, {

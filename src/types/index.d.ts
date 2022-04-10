@@ -6,6 +6,13 @@ export interface NestedTable {
 	columns: NestedTableColumn[];
 }
 
+export interface NestedItem {
+	id: number;
+	parentId: number;
+	data: NestedTableDataCell[];
+	children: NestedItem[]
+}
+
 export interface EditableSourceItem {
 	value: string | number;
 	text: string;

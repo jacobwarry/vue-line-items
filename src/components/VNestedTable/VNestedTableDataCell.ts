@@ -14,8 +14,13 @@ export default Vue.extend({
 		data: {
 			type: Object as () => NestedTableDataCell
 		},
-		isEditing: {
+		isRowBeingEdited: {
 			type: Boolean
+		}
+	},
+	data() {
+		return {
+			isCellBeingEdited: false
 		}
 	},
 	methods: {
@@ -65,7 +70,7 @@ export default Vue.extend({
 			return this.$createElement("span", {}, value);
 		},
 		genChildNode(isEditable: undefined | boolean) {
-			return this.isEditing && isEditable
+			return (this.isRowBeingEdited || this.isCellBeingEdited) && isEditable
 				? this.genEditableCell()
 				: this.genDisplayCell();
 		}
@@ -81,12 +86,18 @@ export default Vue.extend({
 		return this.$createElement("td", {
 				staticClass: "v-nested-table__data-cell",
 				class: {
-					"data-cell-editing": this.isEditing	&& isEditable
+					"data-cell-editing": (this.isRowBeingEdited || this.isCellBeingEdited) && isEditable
 				},
 				attrs: {
 					colspan: this.data.span
 						? this.data.span
 						: 1
+				},
+				on: {
+					click: () => {
+						this.isCellBeingEdited = true;
+						this.$emit("triggerEditCell", true);
+					}
 				}
 			},
 			[

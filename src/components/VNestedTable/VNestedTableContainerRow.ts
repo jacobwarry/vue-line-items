@@ -1,18 +1,17 @@
-﻿import Vue, {VNode} from "vue";
-import {NestedTable} from "@/types";
+﻿import Vue, {PropType, VNode} from "vue";
+import {NestedItem, NestedTable} from "@/types";
 import {PropValidator} from "vue/types/options";
-import VNestedTableDataTable
-	from "@/components/VNestedTable/VNestedTableDataTable";
+import {VNestedTableDataTable} from "@/components/VNestedTable/index";
 
 export default Vue.extend({
 	name: "v-nested-table-container-row",
 	props: {
 		tables: {
-			type: Array,
+			type: Array as PropType<NestedTable[]>,
 			default: () => []
 		} as PropValidator<NestedTable[]>,
 		item: {
-			type: Object
+			type: Object as PropType<NestedItem>
 		},
 		depth: {
 			type: Number,

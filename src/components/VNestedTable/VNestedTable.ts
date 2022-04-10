@@ -1,15 +1,14 @@
 ﻿import "./VNestedTable.scss"
 
 import Vue, {VNode} from "vue";
-import {NestedTable} from "@/types";
+import {NestedItem, NestedTable} from "@/types";
 import {PropValidator} from "vue/types/options";
-import VNestedTableContainer
-	from "@/components/VNestedTable/VNestedTableContainer";
-import VNestedTableColGroup
-	from "@/components/VNestedTable/VNestedTableColGroup";
-import VNestedTableHead from "@/components/VNestedTable/VNestedTableHead";
-import VNestedTableContainerBody
-	from "@/components/VNestedTable/VNestedTableContainerBody";
+import {
+	VNestedTableColGroup,
+	VNestedTableContainer,
+	VNestedTableContainerBody,
+	VNestedTableHead
+} from "@/components/VNestedTable/index";
 
 export default Vue.extend({
 	name: "v-nested-table",
@@ -21,7 +20,7 @@ export default Vue.extend({
 		items: {
 			type: Array,
 			default: () => []
-		}
+		} as PropValidator<NestedItem[]>
 	},
 	methods: {
 		genColGroups(table: NestedTable) {

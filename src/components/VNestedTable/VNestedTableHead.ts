@@ -17,7 +17,7 @@ export default Vue.extend({
 	},
 	methods: {
 		genHeader(column: NestedTableColumn) {
-			const data: Required<Pick<VNodeData, "attrs" | "on" | "class" | "style">> = {
+			const data: Required<Pick<VNodeData, "attrs" | "class" | "style">> = {
 				attrs: {
 					role: "columnheader",
 					scope: "col"
@@ -28,8 +28,7 @@ export default Vue.extend({
 				},
 				class: [
 					`text-${column.align || "start"}`
-				],
-				on: {}
+				]
 			};
 
 			const children = [];
