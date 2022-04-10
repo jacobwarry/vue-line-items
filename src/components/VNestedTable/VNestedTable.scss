@@ -52,8 +52,33 @@
                 border-bottom: 1px solid #DDDDDD;
                 
                 font-size: 1.4rem;
-                //height: 26px;
+                height: 25px;
                 padding: 4px 6px;
+                
+                &.data-cell-editing {
+                    padding: 0;
+                    
+                    > input {
+                        border-width: 0;
+                        box-shadow: inset 0 0 0 1px #8fb4e8;
+                        height: 17px;
+                        padding: 4px 6px;
+                        width: calc(100% - 8px);
+                        
+                        &:focus {
+                            outline: none;
+                        }
+                    }
+                    
+                    > select {
+                        height: 25px;
+                        width: 100%;
+
+                        &:focus {
+                            outline: none;
+                        }
+                    }
+                }
             }
         }
     }

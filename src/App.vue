@@ -9,7 +9,7 @@
 
 <script lang="ts">
 import Vue from "vue";
-import {NestedTable} from "@/types";
+import {EditableSourceItem, NestedTable, NestedTableColumn, NestedTableDataCell} from "@/types";
 import VNestedTable from "@/components/VNestedTable/VNestedTable";
 
 export default Vue.extend({
@@ -26,50 +26,100 @@ export default Vue.extend({
 						{
 							field: "1",
 							label: "Qty",
-							width: 80
+							width: 80,
+							isEditable: () => true,
+							editableInput: "text",
+							editableType: "integer"
 						},
 						{
 							field: "2",
 							label: "ID",
-							width: 118
+							width: 118,
+							isEditable: false
 						},
 						{
 							field: "3",
 							label: "Description",
-							width: "100%"
+							width: "100%",
+							isEditable: () => true,
+							editableInput: "text",
+							editableType: "string"
 						},
 						{
 							field: "4",
 							label: "Tax",
-							width: 100
+							width: 100,
+							isEditable: () => true,
+							editableInput: "select",
+							editableType: "string",
+							editableSource: [
+								{
+									value: 0,
+									text: "No"
+								},
+								{
+									value: 1,
+									text: "Yes"
+								},
+								{
+									value: 2,
+									text: "Clothing"
+								}
+							] as EditableSourceItem[]
 						},
 						{
 							field: "5",
 							label: "SKU",
-							width: 90
+							width: 90,
+							editable: () => true,
+							editableInput: "text",
+							editableType: "string"
 						},
 						{
 							field: "6",
 							label: "Price $",
 							width: 100,
+							isEditable: () => true,
+							displayValue: (item: NestedTableDataCell) => item.value,
+							editableInput: "text",
+							editableType: "decimal"
 						},
 						{
 							field: "7",
 							label: "Cost $",
-							width: 100
+							width: 100,
+							isEditable: () => true,
+							displayValue: (item: NestedTableDataCell) => item.value,
+							editableInput: "text",
+							editableType: "decimal"
 						},
 						{
 							field: "8",
 							label: "Vendor",
 							width: 200,
-							hidden: true
+							isHidden: true,
+							isEditable: () => true,
+							editableInput: "select",
+							editableType: "string",
+							editableSource: [
+								{
+									value: 1,
+									text: "Senor Vendor"
+								},
+								{
+									value: 2,
+									text: "Secondary Vendor"
+								}
+							] as EditableSourceItem[]
 						},
 						{
 							field: "9",
 							label: "Total $",
-							width: 100
+							width: 100,
+							isEditable: false,
+							displayValue: (item: NestedTableDataCell) => item.value,
 						}
-					]
+					] as NestedTableColumn[]
 				}
 			] as NestedTable[],
 			items: [
@@ -100,23 +150,23 @@ export default Vue.extend({
 						{
 							field: "6",
 							value: 0,
-							hidden: () => true
+							isHidden: () => true
 						},
 						{
 							field: "7",
 							value: 0,
-							hidden: () => true
+							isHidden: () => true
 						},
 						{
 							field: "8",
-							value: "Leeds - Trimark",
+							value: 1,
 							span: 2
 						},
 						{
 							field: "9",
 							value: 2996
 						}
-					],
+					] as NestedTableDataCell[],
 					children: [
 						{
 							id: 2,
@@ -134,59 +184,9 @@ export default Vue.extend({
 							children: []
 						}
 					]
-				},
-				{
-					id: 7,
-					parentId: 0,
-					data: [
-						{
-							field: "1",
-							value: 50
-						},
-						{
-							field: "2",
-							value: 552574328
-						},
-						{
-							field: "3",
-							value: "elleven Command 15\" Computer Backpack"
-						},
-						{
-							field: "4",
-							value: 1
-						},
-						{
-							field: "5",
-							value: "0011-54"
-						},
-						{
-							field: "6",
-							value: 0,
-							hidden: () => true
-						},
-						{
-							field: "7",
-							value: 0,
-							hidden: () => true
-						},
-						{
-							field: "8",
-							value: "Leeds - Trimark",
-							span: 2
-						},
-						{
-							field: "9",
-							value: 2996
-						}
-					],
-					children: []
 				}
 			]
 		}
 	}
 });
 </script>
-
-<style lang="scss">
-
-</style>

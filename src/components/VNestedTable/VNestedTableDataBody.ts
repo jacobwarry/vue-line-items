@@ -2,6 +2,7 @@
 import VNestedTableDataRow from "@/components/VNestedTable/VNestedTableDataRow";
 import VNestedTableChildRow
 	from "@/components/VNestedTable/VNestedTableChildRow";
+import {NestedTable} from "@/types";
 
 export default Vue.extend({
 	name: "v-nested-table-data-body",
@@ -13,15 +14,16 @@ export default Vue.extend({
 			type: Number
 		},
 		tables: {
-			type: Array,
+			type: Array as () => NestedTable[],
 			default: () => []
-		}
+		} 
 	},
 	methods: {
 		genDataRow() {
 			return this.$createElement(VNestedTableDataRow, {
 				props: {
-					item: this.item
+					item: this.item,
+					columns: this.tables[this.depth].columns
 				}
 			})
 		},

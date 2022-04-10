@@ -1,13 +1,14 @@
-﻿export interface NestedDataTableHead<T extends any = any> {
-	text: string;
-	value: string;
-	align?: "start" | "center" | "end";
-	width?: string | number;
-}
+﻿export type BooleanFunctionType = () => boolean;
+export type StringFunctionType = (NestedTableDataCell) => string;
 
 export interface NestedTable {
 	renderHeader: boolean;
 	columns: NestedTableColumn[];
+}
+
+export interface EditableSourceItem {
+	value: string | number;
+	text: string;
 }
 
 export interface NestedTableColumn {
@@ -15,5 +16,17 @@ export interface NestedTableColumn {
 	label: string;
 	align?: "start" | "center" | "end";
 	width?: string | number;
-	hidden?: boolean;
+	displayValue?: StringFunctionType;
+	editableInput?: "text" | "select";
+	editableType?: "string" | "integer" | "decimal";
+	editableSource?: EditableSourceItem[];
+	isEditable?: BooleanFunctionType | boolean;
+	isHidden?: boolean;
+}
+
+export interface NestedTableDataCell {
+	field: string;
+	value: any;
+	isHidden?: BooleanFunctionType | boolean;
+	span: number;
 }

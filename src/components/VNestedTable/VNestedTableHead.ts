@@ -47,7 +47,7 @@ export default Vue.extend({
 		}, [
 			this.$createElement("tr", {
 			},this.columns.map(column => {
-				if (!column.hidden) {
+				if (!column.isHidden) {
 					return this.genHeader(column);
 				}
 			}))
